@@ -27,11 +27,11 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  *   |      |Ctrl  |      |LftAlt| Cmd  |                                       |  L2  | RAlt |      |      |      |
  *   `----------------------------------'                                       `----------------------------------'
  *                                        ,-------------.       ,-------------.
- *                                        | Prev | Next |       |VolUp |VolDn |
+ *                                        | Prev | Next |       |VolDn |VolUp |
  *                                 ,------|------|------|       |------+--------+------.
  *                                 |      |      | Home |       | Play |        |      |
- *                                 | Space|  L1  |------|       |------|  L1    |BckSp |
- *                                 |      |      | End  |       |      |        |      |
+ *                                 |L1,   |  L1  |------|       |------|  L1    |L1,   |
+ *                                 |Space |      | End  |       |      |        |BckSp |
  *                                 `--------------------'       `----------------------'
  */
 // If it accepts an argument (i.e, is a function), it doesn't need KC_.
@@ -45,16 +45,16 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
         XXXXXXX,        KC_LCTRL,     XXXXXXX,KC_LALT,KC_LGUI,
                                               KC_MPRV,        KC_MNXT,
                                                               KC_HOME,
-                                               KC_SPC,MO(SYMB),KC_END,
+                                          LT(SYMB, KC_SPC),MO(SYMB),KC_END,
         // right hand
         KC_BSLASH,      KC_F6,         KC_F7,   KC_F8,  KC_F9,  KC_F10,           XXXXXXX,
         KC_LBRACKET,    KC_Y,          KC_U,    KC_I,   KC_O,   KC_P,             KC_EQUAL,
                         KC_H,          KC_J,    KC_K,   KC_L,   KC_SCLN,          KC_QUOT,
         KC_RBRACKET,    KC_N,          KC_M,    KC_COMM,KC_DOT, CTL_T(KC_SLSH),   KC_RSFT,
                         MO(MDIA),      KC_RALT, XXXXXXX,XXXXXXX,XXXXXXX,
-        KC_VOLU,        KC_VOLD,
+        KC_VOLD,        KC_VOLU,
         KC_MPLY,
-        XXXXXXX,        MO(SYMB), KC_BSPACE
+        XXXXXXX,        MO(SYMB), LT(SYMB, KC_BSPACE)
     ),
 /* Keymap 1: Symbol Layer
  *
