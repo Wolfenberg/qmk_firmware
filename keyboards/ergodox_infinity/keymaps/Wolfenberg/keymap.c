@@ -45,7 +45,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
         XXXXXXX,        KC_LCTRL,     XXXXXXX,KC_LALT,KC_LGUI,
                                               KC_MPRV,        KC_MNXT,
                                                               KC_HOME,
-                                          LT(SYMB, KC_SPC),MO(SYMB),KC_END,
+                                              KC_SPC,MO(SYMB),KC_END,
         // right hand
         KC_BSLASH,      KC_F6,         KC_F7,   KC_F8,  KC_F9,  KC_F10,           XXXXXXX,
         KC_LBRACKET,    KC_Y,          KC_U,    KC_I,   KC_O,   KC_P,             KC_EQUAL,
@@ -54,7 +54,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
                         MO(MDIA),      KC_RALT, XXXXXXX,XXXXXXX,XXXXXXX,
         KC_VOLD,        KC_VOLU,
         KC_MPLY,
-        XXXXXXX,        MO(SYMB), LT(SYMB, KC_BSPACE)
+        XXXXXXX,        MO(SYMB),   KC_BSPACE
     ),
 /* Keymap 1: Symbol Layer
  *
