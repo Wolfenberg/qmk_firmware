@@ -7,63 +7,61 @@
 
 enum custom_keycodes {
   PLACEHOLDER = SAFE_RANGE, // can always be here
-  EPRM,
-  VRSN,
-  RGB_SLD
+  FATARROW
 };
 
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 /* Keymap 0: Basic layer
  *
  * ,--------------------------------------------------.           ,--------------------------------------------------.
- * |   `    |   F1 |  F2  |  F3  |  F4  |  F5  | `    |           |   \  |  F6  |  F7  |  F8  |  F9  |  F10 |        |
+ * |        |   F1 |  F2  |  F3  |  F4  |  F5  | F6   |           |  F7  |  F8  |  F9  |  F10 |  F11 |  F12 |   -    |
  * |--------+------+------+------+------+-------------|           |------+------+------+------+------+------+--------|
- * | Esc    |   Q  |   W  |   E  |   R  |   T  |  L1  |           |  [   |   Y  |   U  |   I  |   O  |   P  |   =    |
+ * | Esc    |   Q  |   W  |   E  |   R  |   T  |  `   |           |  [   |   Y  |   U  |   I  |   O  |   P  |   =    |
  * |--------+------+------+------+------+------|      |           |      |------+------+------+------+------+--------|
  * | Tab    |   A  |   S  |   D  |   F  |   G  |------|           |------|   H  |   J  |   K  |   L  |;     |'       |
  * |--------+------+------+------+------+------| Enter|           |   ]  |------+------+------+------+------+--------|
  * | LShift |Z/Ctrl|   X  |   C  |   V  |   B  |      |           |      |   N  |   M  |   ,  |   .  |//Ctrl| RShift |
  * `--------+------+------+------+------+-------------'           `-------------+------+------+------+------+--------'
- *   |      |Ctrl  |      |LftAlt| Cmd  |                                       |  L2  | RAlt |      |      |      |
+ *   |      |      |      |LftAlt| Cmd  |                                       |  L2  | RAlt |      |      |      |
  *   `----------------------------------'                                       `----------------------------------'
  *                                        ,-------------.       ,-------------.
  *                                        | Prev | Next |       |VolDn |VolUp |
  *                                 ,------|------|------|       |------+--------+------.
  *                                 |      |      | Home |       | Play |        |      |
  *                                 |L1,   |  L1  |------|       |------|  L1    |L1,   |
- *                                 |Space |      | End  |       |      |        |BckSp |
+ *                                 |Space |      | End  |       |  \   |        |BckSp |
  *                                 `--------------------'       `----------------------'
  */
 // If it accepts an argument (i.e, is a function), it doesn't need KC_.
 // Otherwise, it needs KC_*
 [BASE] = LAYOUT_ergodox(  // layer 0 : default
         // left hand
-        KC_GRAVE,       KC_F1,        KC_F2,  KC_F3,  KC_F4,  KC_F5,  KC_GRAVE,
-        KC_ESCAPE,      KC_Q,         KC_W,   KC_E,   KC_R,   KC_T,   TG(SYMB),
+        XXXXXXX,        KC_F1,        KC_F2,  KC_F3,  KC_F4,  KC_F5,  KC_F6,
+        KC_ESCAPE,      KC_Q,         KC_W,   KC_E,   KC_R,   KC_T,   KC_GRAVE,
         KC_TAB,         KC_A,         KC_S,   KC_D,   KC_F,   KC_G,
         KC_LSFT,        CTL_T(KC_Z),  KC_X,   KC_C,   KC_V,   KC_B,   KC_ENT,
-        XXXXXXX,        KC_LCTRL,     XXXXXXX,KC_LALT,KC_LGUI,
+        XXXXXXX,        XXXXXXX,      XXXXXXX,KC_LALT,KC_LGUI,
                                               KC_MPRV,        KC_MNXT,
                                                               KC_HOME,
                                               KC_SPC,MO(SYMB),KC_END,
         // right hand
-        KC_BSLASH,      KC_F6,         KC_F7,   KC_F8,  KC_F9,  KC_F10,           XXXXXXX,
+        KC_F7,          KC_F8,         KC_F9,   KC_F10, KC_F11, KC_F12,           KC_MINUS,
         KC_LBRACKET,    KC_Y,          KC_U,    KC_I,   KC_O,   KC_P,             KC_EQUAL,
                         KC_H,          KC_J,    KC_K,   KC_L,   KC_SCLN,          KC_QUOT,
         KC_RBRACKET,    KC_N,          KC_M,    KC_COMM,KC_DOT, CTL_T(KC_SLSH),   KC_RSFT,
                         MO(MDIA),      KC_RALT, XXXXXXX,XXXXXXX,XXXXXXX,
         KC_VOLD,        KC_VOLU,
         KC_MPLY,
-        XXXXXXX,        MO(SYMB),   KC_BSPACE
+        KC_BSLASH,        MO(SYMB),   KC_BSPACE
     ),
 /* Keymap 1: Symbol Layer
  *
  * ,---------------------------------------------------.           ,--------------------------------------------------.
- * |         |  F1  |  F2  |  F3  |  F4  |  F5  |      |           |      |  F6  |  F7  |  F8  |  F9  |  F10 |   F11  |
+ * |         |  F1  |  F2  |  F3  |  F4  |  F5  |  F6  |           |  F7  |  F8  |  F9  |  F10 | F11  | F12  |        |
  * |---------+------+------+------+------+------+------|           |------+------+------+------+------+------+--------|
- * |         |      |      |      |      |      |      |           |      |   7  |   8  |   9  |      |   *  |   F12  |
- * |---------+------+------+------+------+------|  Ж   |           |      |------+------+------+------+------+--------|
- * |         |   !  |   @  |   #  |   $  |   %  |------|           |------|   4  |   5  |   6  |      |   +  |    -   |
+ * |         |      |      |      |      |      |      |           |      |   7  |   8  |   9  |      |   *  |   _    |
+ * |---------+------+------+------+------+------|{}=>{}|           |      |------+------+------+------+------+--------|
+ * |         |   !  |   @  |   #  |   $  |   %  |------|           |------|   4  |   5  |   6  |      |   +  |   -    |
  * |---------+------+------+------+------+------|      |           |      |------+------+------+------+------+--------|
  * |         |   ^  |   &  |   *  |   (  |   )  |      |           |   0  |   1  |   2  |   3  |      |   \  |        |
  * `---------+------+------+------+------+-------------'           `-------------+------+------+------+------+--------'
@@ -80,8 +78,8 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 // SYMBOLS
 [SYMB] = LAYOUT_ergodox(
        // left hand
-       KC_TRNS, KC_F1,   KC_F2,  KC_F3,  KC_F4,    KC_F5,  KC_TRNS,
-       KC_TRNS, KC_TRNS, KC_TRNS,KC_TRNS,KC_TRNS,  KC_TRNS,UC(0416),
+       KC_TRNS, KC_F1,   KC_F2,  KC_F3,  KC_F4,    KC_F5,  KC_F6,
+       KC_TRNS, KC_TRNS, KC_TRNS,KC_TRNS,KC_TRNS,  KC_TRNS,FATARROW,
        KC_TRNS, KC_EXLM, KC_AT,  KC_HASH,KC_DOLLAR,KC_PERC,
        KC_TRNS, KC_CIRC, KC_AMPR,KC_ASTR,KC_LPRN,  KC_RPRN,KC_TRNS,
        KC_TRNS, KC_TRNS, KC_TRNS,KC_TRNS,KC_TRNS,
@@ -89,8 +87,8 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
                                                  KC_TRNS,
                                KC_TRNS,KC_TRNS,  KC_TRNS,
        // right hand
-       KC_TRNS, KC_F6,   KC_F7,   KC_F8,   KC_F9,   KC_F10,  KC_F11,
-       KC_TRNS, KC_7,    KC_8,    KC_9,    KC_TRNS, KC_ASTR, KC_F12,
+       KC_F7,   KC_F8,   KC_F9,   KC_F10,  KC_F11,  KC_F12,  KC_TRNS,
+       KC_TRNS, KC_7,    KC_8,    KC_9,    KC_TRNS, KC_ASTR, KC_UNDERSCORE,
                 KC_4,    KC_5,    KC_6,    KC_TRNS, KC_PLUS, KC_MINUS,
        KC_0,    KC_1,    KC_2,    KC_3,    KC_TRNS, KC_BSLS, KC_TRNS,
                          KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS,
@@ -161,27 +159,13 @@ const macro_t *action_get_macro(keyrecord_t *record, uint8_t id, uint8_t opt)
 
 bool process_record_user(uint16_t keycode, keyrecord_t *record) {
   switch (keycode) {
-    // dynamically generate these.
-    case EPRM:
+    case FATARROW:
       if (record->event.pressed) {
-        eeconfig_init();
+        SEND_STRING("()=>{}");
       }
       return false;
       break;
-    case VRSN:
-      if (record->event.pressed) {
-        SEND_STRING (QMK_KEYBOARD "/" QMK_KEYMAP " @ " QMK_VERSION);
-      }
-      return false;
-      break;
-    case RGB_SLD:
-      if (record->event.pressed) {
-        #ifdef RGBLIGHT_ENABLE
-          rgblight_mode(1);
-        #endif
-      }
-      return false;
-      break;
+    
   }
   return true;
 }
